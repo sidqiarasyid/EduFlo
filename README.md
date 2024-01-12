@@ -10,6 +10,7 @@ Team: Tech Trailblazer
 -Sidqi
 -Hanif
 -Heraldo
+
 About:
 banyak siswa siswi di indonesia yang hobinya belajar dengan sistem kebut semalam, dan hal ini tentunya tak jarang membuat nilai siswa pas pas an dan bahkan tidak memuaskan. 
 
