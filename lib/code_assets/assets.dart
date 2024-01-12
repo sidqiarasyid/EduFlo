@@ -1,11 +1,13 @@
-import 'package:edu_flo/code_assets/custom_widget.dart';
+import 'package:edu_flo/code_assets/custom_button.dart';
+import 'package:edu_flo/code_assets/custom_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class AssetsIcons {
+class AssetsIconImage {
   static SvgPicture iconBack = SvgPicture.asset("assets/icon/icon_back.svg");
   static SvgPicture eyeOff = SvgPicture.asset("assets/icon/eye_off.svg");
+  static Image google = Image.asset("assets/images/google.png");
 }
 
 class StyleText {
@@ -22,6 +24,21 @@ class StyleText {
   static TextStyle button(Color? color) {
     return GoogleFonts.inter(
         fontSize: 16, fontWeight: FontWeight.w700, color: color);
+  }
+
+  static TextStyle overline(Color? color) {
+    return GoogleFonts.inter(
+        fontSize: 11, fontWeight: FontWeight.w400, color: color);
+  }
+
+  static TextStyle textSpan(Color? color) {
+    return GoogleFonts.inter(
+        fontSize: 15, fontWeight: FontWeight.w300, color: color);
+  }
+
+  static TextStyle richText(Color? color) {
+    return GoogleFonts.inter(
+        fontSize: 15, fontWeight: FontWeight.w700, color: color);
   }
 }
 
@@ -46,5 +63,10 @@ class CustomWidget {
   static CustomTextFormsField formField(
       {required String hintText, required bool isPass}) {
     return CustomTextFormsField(isPass: isPass, hintText: hintText);
+  }
+
+  static CustomElevatedButton primaryBtn(
+      {required String txtDefault, required bool btnGoogle}) {
+    return CustomElevatedButton(btnGoogle: btnGoogle, txtDefault: txtDefault);
   }
 }
