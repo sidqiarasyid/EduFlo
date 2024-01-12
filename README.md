@@ -5,7 +5,11 @@ Screenshot (under development):
 
 ![WhatsApp Image 2024-01-12 at 19 43 29_9c2b3912](https://github.com/sidqiarasyid/EduFlo/assets/80884710/a7847582-de81-4f88-9904-7710709e9853)
 
-
+Team: Tech Trailblazer
+-Gavin
+-Sidqi
+-Hanif
+-Heraldo
 About:
 banyak siswa siswi di indonesia yang hobinya belajar dengan sistem kebut semalam, dan hal ini tentunya tak jarang membuat nilai siswa pas pas an dan bahkan tidak memuaskan. 
 
