@@ -1,3 +1,4 @@
+import 'package:edu_flo/page/intro_slide.dart';
 import 'package:edu_flo/page/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SignInPage()
+      home: const IntroSlidePage()
     );
   }
 }
