@@ -8,6 +8,9 @@ class AssetsIconImage {
   static SvgPicture iconBack = SvgPicture.asset("assets/icon/icon_back.svg");
   static SvgPicture eyeOff = SvgPicture.asset("assets/icon/eye_off.svg");
   static Image google = Image.asset("assets/images/google.png");
+  static Image slide_1 = Image.asset("assets/images/slide_1.png");
+  static Image slide_2 = Image.asset("assets/images/slide_2.png");
+  static Image slide_3 = Image.asset("assets/images/slide_3.png");
 }
 
 class StyleText {
