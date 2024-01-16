@@ -39,6 +39,7 @@ dependencies:
   fluttertoast:
   sqflite:
   intl:
+  syncfusion_flutter_datepicker: ^24.1.45
 
 dev_dependencies:
   flutter_test:
