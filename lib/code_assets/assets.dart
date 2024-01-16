@@ -37,6 +37,11 @@ class StyleText {
         fontSize: 16, fontWeight: FontWeight.w300, color: color);
   }
 
+  static TextStyle calendar(Color? color) {
+    return GoogleFonts.inter(
+        fontSize: 16, fontWeight: FontWeight.w400, color: color);
+  }
+
   static TextStyle button(Color? color) {
     return GoogleFonts.inter(
         fontSize: 16, fontWeight: FontWeight.w700, color: color);
@@ -85,6 +90,11 @@ class StyleText {
   static TextStyle subtitleListtile(Color? color) {
     return GoogleFonts.inter(
         fontSize: 10, fontWeight: FontWeight.w400, color: color);
+  }
+
+  static TextStyle weekDate(Color? color) {
+    return GoogleFonts.inter(
+        fontSize: 13, fontWeight: FontWeight.w700, color: color);
   }
 }
 

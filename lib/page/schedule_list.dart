@@ -7,6 +7,7 @@ import 'package:edu_flo/model/db/login_db.dart';
 import 'package:edu_flo/page/home_edu.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class SchedulePage extends StatefulWidget {
   const SchedulePage({super.key});
@@ -97,7 +98,13 @@ class _SchedulePageState extends State<SchedulePage> {
       title: Text("My List",
           style: StyleText.appbarTitle(const Color(0xFF39C0FF))),
       centerTitle: true,
-      actions: [IconButton(onPressed: () {}, icon: AssetsIconImage.calendar)],
+      actions: [
+        IconButton(
+            onPressed: () {
+              topSheet();
+            },
+            icon: AssetsIconImage.calendar)
+      ],
       leading: IconButton(
           onPressed: () {
             key.currentState!.openDrawer();
@@ -175,7 +182,7 @@ class _SchedulePageState extends State<SchedulePage> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(day, style: StyleText.appbarTitle(Colors.white)),
+                  Text("$day,", style: StyleText.appbarTitle(Colors.white)),
                   SpaceWidget.height(context, 0.01),
                   Text(time, style: StyleText.bigText(Colors.white)),
                   SpaceWidget.height(context, 0.01),
@@ -315,6 +322,71 @@ class _SchedulePageState extends State<SchedulePage> {
           ],
         ),
       ),
+    );
+  }
+
+  topSheet() {
+    return showGeneralDialog(
+      context: context,
+      barrierDismissible: true,
+      transitionDuration: const Duration(milliseconds: 500),
+      barrierLabel: MaterialLocalizations.of(context).dialogLabel,
+      barrierColor: Colors.black.withOpacity(0.5),
+      pageBuilder: (context, _, __) {
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Container(
+              height: MediaQuery.of(context).size.height * 0.5,
+              padding: const EdgeInsets.only(
+                  top: 40, left: 12, right: 12, bottom: 8),
+              decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius:
+                      BorderRadius.vertical(bottom: Radius.circular(25))),
+              child: SfDateRangePicker(
+                selectionRadius: 50,
+                allowViewNavigation: true,
+                showNavigationArrow: true,
+                showActionButtons: true,
+                minDate: DateTime(2020, 01, 01),
+                maxDate: DateTime(2045, 12, 31),
+                enablePastDates: true,
+                headerStyle: DateRangePickerHeaderStyle(
+                    textStyle: StyleText.button(Colors.black)),
+                monthViewSettings: DateRangePickerMonthViewSettings(
+                  dayFormat: 'EEE',
+                  viewHeaderStyle: DateRangePickerViewHeaderStyle(
+                      textStyle: StyleText.weekDate(Colors.black)),
+                  showTrailingAndLeadingDates: true,
+                ),
+                monthCellStyle: DateRangePickerMonthCellStyle(
+                  textStyle: StyleText.calendar(Colors.black),
+                  todayTextStyle: StyleText.calendar(Colors.black),
+                  trailingDatesTextStyle:
+                      StyleText.calendar(Colors.black.withOpacity(0.25)),
+                  leadingDatesTextStyle:
+                      StyleText.calendar(Colors.black.withOpacity(0.25)),
+                ),
+                selectionTextStyle: StyleText.calendar(Colors.black),
+                selectionColor: const Color(0xFFD0BCFF),
+              ),
+            ),
+          ],
+        );
+      },
+      transitionBuilder: (context, animation, secondaryAnimation, child) {
+        return SlideTransition(
+          position: CurvedAnimation(
+            parent: animation,
+            curve: Curves.easeOut,
+          ).drive(Tween<Offset>(
+            begin: const Offset(0, -1.0),
+            end: Offset.zero,
+          )),
+          child: child,
+        );
+      },
     );
   }
 }
