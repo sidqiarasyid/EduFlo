@@ -4,8 +4,14 @@ import 'package:flutter/material.dart';
 class CustomTextFormsField extends StatefulWidget {
   final String hintText;
   final bool isPass;
+  final TextEditingController? emailController;
+  final TextEditingController? passController;
   const CustomTextFormsField(
-      {Key? key, required this.hintText, required this.isPass})
+      {Key? key,
+      required this.hintText,
+      required this.isPass,
+      this.emailController,
+      this.passController})
       : super(key: key);
 
   @override
@@ -23,6 +29,7 @@ class _CustomTextFormsFieldState extends State<CustomTextFormsField> {
               borderRadius: BorderRadius.circular(30),
             ),
             child: TextFormField(
+              controller: widget.passController,
               obscureText: !showPass,
               decoration: InputDecoration(
                 hintStyle: StyleText.subtitle(const Color(0x80000000)),
@@ -51,7 +58,8 @@ class _CustomTextFormsFieldState extends State<CustomTextFormsField> {
               color: Colors.white,
               borderRadius: BorderRadius.circular(30),
             ),
-            child: TextField(
+            child: TextFormField(
+              controller: widget.emailController,
               decoration: InputDecoration(
                 hintStyle: StyleText.subtitle(const Color(0x80000000)),
                 hintText: widget.hintText,

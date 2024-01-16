@@ -4,8 +4,12 @@ import 'package:flutter/material.dart';
 class CustomElevatedButton extends StatefulWidget {
   final bool btnGoogle;
   final String txtDefault;
+  final VoidCallback onPressed;
   const CustomElevatedButton(
-      {Key? key, required this.btnGoogle, required this.txtDefault})
+      {Key? key,
+      required this.btnGoogle,
+      required this.txtDefault,
+      required this.onPressed})
       : super(key: key);
 
   @override
@@ -23,7 +27,7 @@ class _CustomElevatedButtonState extends State<CustomElevatedButton> {
                 primary: Colors.white,
                 shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(30)))),
-            onPressed: () {},
+            onPressed: widget.onPressed,
             child: Row(
               children: [
                 Padding(
@@ -40,11 +44,11 @@ class _CustomElevatedButtonState extends State<CustomElevatedButton> {
                 minimumSize: Size(
                     double.infinity, MediaQuery.of(context).size.height * 0.07),
                 primary: const Color(0xFF1CC8FF),
-                textStyle: StyleText.button(null),
                 shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(30)))),
-            onPressed: () {},
-            child: Text(widget.txtDefault),
+            onPressed: widget.onPressed,
+            child:
+                Text(widget.txtDefault, style: StyleText.button(Colors.white)),
           );
   }
 }
