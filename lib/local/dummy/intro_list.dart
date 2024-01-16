@@ -1,5 +1,5 @@
 import 'package:edu_flo/code_assets/assets.dart';
-import 'package:edu_flo/model/intro_model.dart';
+import 'package:edu_flo/model/dummy/intro_model.dart';
 import 'package:flutter/material.dart';
 
 List<IntroContent> intro = [
