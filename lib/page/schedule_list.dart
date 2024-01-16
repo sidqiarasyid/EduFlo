@@ -4,6 +4,7 @@ import 'package:edu_flo/code_assets/assets.dart';
 import 'package:edu_flo/local/db_helper.dart';
 import 'package:edu_flo/local/dummy/schedule_list.dart';
 import 'package:edu_flo/model/db/login_db.dart';
+import 'package:edu_flo/page/home_edu.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -61,18 +62,31 @@ class _SchedulePageState extends State<SchedulePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.white.withOpacity(0.95),
         key: key,
         appBar: appbarWidget(),
         drawer: drawerWidget(),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Column(
-            children: [
-              header(),
-              content_schedule(),
-              form_schedule(),
-            ],
-          ),
+        body: Stack(
+          children: [
+            Column(
+              children: [
+                header(),
+                content_schedule(),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.1,
+                    width: double.infinity,
+                    decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius:
+                            BorderRadius.vertical(top: Radius.circular(25))),
+                  ),
+                ),
+              ],
+            ),
+            form_schedule(),
+          ],
         ),
       ),
     );
@@ -146,57 +160,60 @@ class _SchedulePageState extends State<SchedulePage> {
   }
 
   Widget header() {
-    return Card(
-      margin: const EdgeInsets.only(top: 15),
-      elevation: 5,
-      color: const Color(0xFF39C0FF),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
-      child: Padding(
-        padding: const EdgeInsets.all(15),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(day, style: StyleText.appbarTitle(Colors.white)),
-                SpaceWidget.height(context, 0.01),
-                Text(time, style: StyleText.bigText(Colors.white)),
-                SpaceWidget.height(context, 0.01),
-                Text(date, style: StyleText.dateDay(Colors.white)),
-              ],
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                        width: 150,
-                        height: 75,
-                        decoration: const BoxDecoration(
-                          color: Colors.transparent,
-                          image: DecorationImage(
-                              image: AssetImage(
-                                  "assets/images/study_mode_little.png"),
-                              fit: BoxFit.cover),
-                        ))),
-                SpaceWidget.height(context, 0.01),
-                GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                        width: 150,
-                        height: 75,
-                        decoration: const BoxDecoration(
-                          color: Colors.transparent,
-                          image: DecorationImage(
-                              image: AssetImage(
-                                  "assets/images/style_find_little.png"),
-                              fit: BoxFit.cover),
-                        ))),
-              ],
-            )
-          ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15),
+      child: Card(
+        margin: const EdgeInsets.only(top: 15),
+        elevation: 5,
+        color: const Color(0xFF39C0FF),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(day, style: StyleText.appbarTitle(Colors.white)),
+                  SpaceWidget.height(context, 0.01),
+                  Text(time, style: StyleText.bigText(Colors.white)),
+                  SpaceWidget.height(context, 0.01),
+                  Text(date, style: StyleText.dateDay(Colors.white)),
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                          width: 150,
+                          height: 75,
+                          decoration: const BoxDecoration(
+                            color: Colors.transparent,
+                            image: DecorationImage(
+                                image: AssetImage(
+                                    "assets/images/study_mode_little.png"),
+                                fit: BoxFit.cover),
+                          ))),
+                  SpaceWidget.height(context, 0.01),
+                  GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                          width: 150,
+                          height: 75,
+                          decoration: const BoxDecoration(
+                            color: Colors.transparent,
+                            image: DecorationImage(
+                                image: AssetImage(
+                                    "assets/images/style_find_little.png"),
+                                fit: BoxFit.cover),
+                          ))),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -207,24 +224,27 @@ class _SchedulePageState extends State<SchedulePage> {
       child: ListView.builder(
         itemCount: schedule.length,
         itemBuilder: (BuildContext context, int index) {
-          return Card(
-            color: Colors.white,
-            surfaceTintColor: Colors.white,
-            margin: const EdgeInsets.only(top: 20),
-            elevation: 3,
-            child: ListTile(
-              title: Text(schedule[index].title,
-                  style: StyleText.titleListtile(Colors.black)),
-              subtitle: Text(schedule[index].subtitle,
-                  style: StyleText.subtitleListtile(Colors.black)),
-              trailing: Container(
-                height: 20,
-                width: 20,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: const Color(0xFFD0BCFF)),
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: Card(
+              color: Colors.white,
+              surfaceTintColor: Colors.white,
+              margin: const EdgeInsets.only(top: 20),
+              elevation: 3,
+              child: ListTile(
+                title: Text(schedule[index].title,
+                    style: StyleText.titleListtile(Colors.black)),
+                subtitle: Text(schedule[index].subtitle,
+                    style: StyleText.subtitleListtile(Colors.black)),
+                trailing: Container(
+                  height: 20,
+                  width: 20,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      color: const Color(0xFFD0BCFF)),
+                ),
+                isThreeLine: true,
               ),
-              isThreeLine: true,
             ),
           );
         },
@@ -233,56 +253,67 @@ class _SchedulePageState extends State<SchedulePage> {
   }
 
   Widget form_schedule() {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 25),
-      child: Row(
-        children: [
-          Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.25),
-                    blurRadius: 7,
-                    spreadRadius: 3,
-                    offset: const Offset(4, 8),
-                  )
-                ],
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(30),
-              ),
-              child: TextFormField(
-                onChanged: (String text) {
-                  setState(() {
-                    scheduleText = text;
-                  });
-                },
-                decoration: InputDecoration(
-                  hintStyle: StyleText.subtitle(const Color(0x80000000)),
-                  hintText: "Add your schedule...",
-                  border: InputBorder.none,
-                  contentPadding: const EdgeInsets.all(20),
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 15),
+        margin: const EdgeInsets.only(bottom: 40),
+        child: Row(
+          children: [
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.25),
+                      blurRadius: 7,
+                      spreadRadius: 3,
+                      offset: const Offset(4, 8),
+                    )
+                  ],
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                child: TextFormField(
+                  onChanged: (String text) {
+                    setState(() {
+                      scheduleText = text;
+                    });
+                  },
+                  decoration: InputDecoration(
+                    hintStyle: StyleText.subtitle(const Color(0x80000000)),
+                    hintText: "Add your schedule...",
+                    border: InputBorder.none,
+                    contentPadding: const EdgeInsets.all(20),
+                  ),
                 ),
               ),
             ),
-          ),
-          SpaceWidget.width(context, 0.05),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF1CC8FF),
-                textStyle: StyleText.button(null),
-                shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(500)))),
-            onPressed: () {},
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 23),
-              child: scheduleText != ""
-                  ? const Icon(Icons.arrow_forward_ios_rounded,
-                      color: Colors.white)
-                  : AssetsIconImage.home,
-            ),
-          )
-        ],
+            SpaceWidget.width(context, 0.05),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF1CC8FF),
+                  textStyle: StyleText.button(null),
+                  shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(500)))),
+              onPressed: scheduleText != ""
+                  ? () {}
+                  : () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomeEduFlo()));
+                    },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 23),
+                child: scheduleText != ""
+                    ? const Icon(Icons.arrow_forward_ios_rounded,
+                        color: Colors.white)
+                    : AssetsIconImage.home,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
