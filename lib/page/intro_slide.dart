@@ -134,7 +134,7 @@ class _IntroSlidePageState extends State<IntroSlidePage> {
       child: currentIndex != 2
           ? ElevatedButton(
               style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF1CC8FF),
+                  primary: const Color(0xFF1CC8FF),
                   textStyle: StyleText.button(null),
                   shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(500)))),
@@ -158,7 +158,7 @@ class _IntroSlidePageState extends State<IntroSlidePage> {
                     style: ElevatedButton.styleFrom(
                         minimumSize: Size(double.infinity,
                             MediaQuery.of(context).size.height * 0.07),
-                        backgroundColor: const Color(0xFF1CC8FF),
+                        primary: const Color(0xFF1CC8FF),
                         shape: const RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(30)))),
@@ -177,7 +177,7 @@ class _IntroSlidePageState extends State<IntroSlidePage> {
                         elevation: 0,
                         minimumSize: Size(double.infinity,
                             MediaQuery.of(context).size.height * 0.07),
-                        backgroundColor: Colors.white,
+                        primary: Colors.white,
                         shape: const RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(30)))),
