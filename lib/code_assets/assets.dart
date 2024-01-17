@@ -10,6 +10,8 @@ class AssetsIconImage {
   static SvgPicture calendar = SvgPicture.asset("assets/icon/calendar.svg");
   static SvgPicture dashboard = SvgPicture.asset("assets/icon/dashboard.svg");
   static SvgPicture home = SvgPicture.asset("assets/icon/home.svg");
+  static SvgPicture out_studymode =
+      SvgPicture.asset("assets/icon/out_studymode.svg");
   static Image google = Image.asset("assets/images/google.png");
   static Image slide_1 = Image.asset("assets/images/slide_1.png");
   static Image slide_2 = Image.asset("assets/images/slide_2.png");
@@ -75,6 +77,11 @@ class StyleText {
   static TextStyle email(Color? color) {
     return GoogleFonts.inter(
         fontSize: 12, fontWeight: FontWeight.w400, color: color);
+  }
+
+  static TextStyle titlePopup(Color? color) {
+    return GoogleFonts.inter(
+        fontSize: 12, fontWeight: FontWeight.w500, color: color);
   }
 
   static TextStyle bigText(Color? color) {
