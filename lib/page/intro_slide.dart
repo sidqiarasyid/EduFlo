@@ -1,7 +1,7 @@
 import 'package:edu_flo/code_assets/assets.dart';
 import 'package:edu_flo/code_assets/intro_builder.dart';
-import 'package:edu_flo/local/intro_list.dart';
-import 'package:edu_flo/model/intro_model.dart';
+import 'package:edu_flo/local/dummy/intro_list.dart';
+import 'package:edu_flo/model/dummy/intro_model.dart';
 import 'package:edu_flo/page/sign_in.dart';
 import 'package:edu_flo/page/sign_up.dart';
 import 'package:flutter/material.dart';

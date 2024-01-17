@@ -36,6 +36,12 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts:
   flutter_svg:
+  fluttertoast:
+  sqflite:
+  intl:
+  syncfusion_flutter_datepicker: ^24.1.45
+  stop_watch_timer: ^3.0.2
+  just_audio: ^0.9.36
 
 dev_dependencies:
   flutter_test:
@@ -63,6 +69,7 @@ flutter:
   assets:
   - assets/icon/
   - assets/images/
+  - assets/sound/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
