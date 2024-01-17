@@ -5,7 +5,10 @@ import 'package:edu_flo/local/db_helper.dart';
 import 'package:edu_flo/local/dummy/schedule_list.dart';
 import 'package:edu_flo/model/db/login_db.dart';
 import 'package:edu_flo/page/home_edu.dart';
+import 'package:edu_flo/page/stopwatch.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
@@ -26,6 +29,8 @@ class _SchedulePageState extends State<SchedulePage> {
   String date = DateFormat.yMMMMd().format(DateTime.now());
   String scheduleText = "";
   late Timer timer;
+  TextEditingController hour = TextEditingController();
+  TextEditingController minute = TextEditingController();
 
   @override
   void initState() {
@@ -193,7 +198,9 @@ class _SchedulePageState extends State<SchedulePage> {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        showTimerSet();
+                      },
                       child: Container(
                           width: 150,
                           height: 75,
@@ -385,6 +392,140 @@ class _SchedulePageState extends State<SchedulePage> {
             end: Offset.zero,
           )),
           child: child,
+        );
+      },
+    );
+  }
+
+  Future<void> showTimerSet() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: const Color(0xFFD0BCFF),
+          title: Text(
+            "Enter Study Mode time",
+            style: StyleText.titlePopup(const Color(0xFF49454F)),
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: TextFormField(
+                        controller: hour,
+                        maxLength: 2,
+                        keyboardType: TextInputType.number,
+                        style: GoogleFonts.inter(
+                            fontSize: 45,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.black),
+                        decoration: const InputDecoration(
+                          counterText: "",
+                          border: InputBorder.none,
+                          contentPadding: EdgeInsets.all(20),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Text(":",
+                        style: GoogleFonts.inter(
+                            fontSize: 57,
+                            fontWeight: FontWeight.w400,
+                            color: const Color(0xFF1D1B20))),
+                  ),
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: TextFormField(
+                        controller: minute,
+                        maxLength: 2,
+                        keyboardType: TextInputType.number,
+                        style: GoogleFonts.inter(
+                            fontSize: 45,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.black),
+                        decoration: const InputDecoration(
+                          counterText: "",
+                          border: InputBorder.none,
+                          contentPadding: EdgeInsets.all(20),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SpaceWidget.height(context, 0.01),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Hour",
+                    style: GoogleFonts.inter(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: const Color(0xFF49454F)),
+                  ),
+                  Text(
+                    "Minute",
+                    style: GoogleFonts.inter(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: const Color(0xFF49454F)),
+                  ),
+                ],
+              )
+            ],
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text('OK'),
+              onPressed: () {
+                if (hour.text.isEmpty && minute.text.isEmpty) {
+                  Fluttertoast.showToast(
+                      msg: "the Hour and Minute fields cannot be empty");
+                } else if (hour.text.isEmpty) {
+                  Fluttertoast.showToast(msg: "Hour fields cannot be empty");
+                } else if (minute.text.isEmpty) {
+                  Fluttertoast.showToast(msg: "Minute fields cannot be empty");
+                } else if (int.parse(hour.text) > 23 &&
+                    int.parse(minute.text) > 59) {
+                  Fluttertoast.showToast(
+                      msg:
+                          "Hours cannot be more than 23 and Minutes cannot be more than 59");
+                } else if (int.parse(hour.text) > 23) {
+                  Fluttertoast.showToast(msg: "Hours cannot be more than 23");
+                } else if (int.parse(minute.text) > 59) {
+                  Fluttertoast.showToast(msg: "Minutes cannot be more than 59");
+                } else {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => StopwatchPage(
+                              hour: int.parse(hour.text),
+                              minute: int.parse(minute.text))));
+                }
+              },
+            ),
+          ],
         );
       },
     );
