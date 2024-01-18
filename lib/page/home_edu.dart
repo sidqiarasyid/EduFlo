@@ -1,4 +1,5 @@
 import 'package:edu_flo/code_assets/assets.dart';
+import 'package:edu_flo/page/form1_page.dart';
 import 'package:edu_flo/page/schedule_all.dart';
 import 'package:edu_flo/page/stopwatch.dart';
 import 'package:flutter/material.dart';
@@ -51,7 +52,12 @@ class _HomeEduFloState extends State<HomeEduFlo> {
               ),
               SpaceWidget.height(context, 0.03),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const FormPageFirst()));
+                },
                 child: AssetsIconImage.style_find,
               ),
               Expanded(child: Container()),
