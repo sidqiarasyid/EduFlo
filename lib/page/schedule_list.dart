@@ -306,7 +306,7 @@ class _SchedulePageState extends State<SchedulePage> {
             SpaceWidget.width(context, 0.05),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF1CC8FF),
+                  primary: const Color(0xFF1CC8FF),
                   textStyle: StyleText.button(null),
                   shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(500)))),

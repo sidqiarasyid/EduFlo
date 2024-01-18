@@ -22,6 +22,11 @@ class AssetsIconImage {
   static Image style_find = Image.asset("assets/images/style_find.png");
   static Image avatar_user = Image.asset("assets/images/avatar_user.png");
   static Image logo_app = Image.asset("assets/images/logo_app.png");
+  static AssetImage bg_form1 =  AssetImage("assets/images/bg_form1.png");
+  static AssetImage bg_form2 =  AssetImage("assets/images/bg_form2.png");
+  static AssetImage bg_morning =  AssetImage("assets/images/bg_btnmorning.png");
+  static AssetImage bg_night =  AssetImage("assets/images/bg_btnnight.png");
+  static AssetImage bg_moon =  AssetImage("assets/images/bg_btnmoon.png");
   static Image study_mode_little =
       Image.asset("assets/images/study_mode_little.png");
   static Image style_find_little =
@@ -29,6 +34,11 @@ class AssetsIconImage {
 }
 
 class StyleText {
+  static TextStyle btnForm(Color? color) {
+    return GoogleFonts.inter(
+        fontSize: 24, fontWeight: FontWeight.w700, color: color);
+  }
+
   static TextStyle title(Color? color) {
     return GoogleFonts.inter(
         fontSize: 36, fontWeight: FontWeight.w700, color: color);
@@ -72,6 +82,11 @@ class StyleText {
   static TextStyle appbarTitle(Color? color) {
     return GoogleFonts.inter(
         fontSize: 20, fontWeight: FontWeight.w600, color: color);
+  }
+
+  static TextStyle formText(Color? color) {
+    return GoogleFonts.inter(
+        fontSize: 24, fontWeight: FontWeight.w600, color: color);
   }
 
   static TextStyle email(Color? color) {
