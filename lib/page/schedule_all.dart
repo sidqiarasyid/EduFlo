@@ -36,12 +36,19 @@ class _ScheduleAllPageState extends State<ScheduleAllPage> {
                     title: Text(step.day),
                   );
                 },
-                body: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: one_week.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Text(one_week[index].activity);
-                  },
+                body: Padding(
+                  padding: const EdgeInsets.only(bottom: 12),
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: one_week.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(left: 12),
+                        child:
+                            Text("${index + 1}. ${one_week[index].activity}"),
+                      );
+                    },
+                  ),
                 ),
                 isExpanded: step.expand,
               );

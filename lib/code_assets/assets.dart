@@ -10,6 +10,7 @@ class AssetsIconImage {
   static SvgPicture calendar = SvgPicture.asset("assets/icon/calendar.svg");
   static SvgPicture dashboard = SvgPicture.asset("assets/icon/dashboard.svg");
   static SvgPicture home = SvgPicture.asset("assets/icon/home.svg");
+  static SvgPicture pencil = SvgPicture.asset("assets/icon/pencil.svg");
   static SvgPicture out_studymode =
       SvgPicture.asset("assets/icon/out_studymode.svg");
   static Image google = Image.asset("assets/images/google.png");
@@ -24,6 +25,7 @@ class AssetsIconImage {
   static Image logo_app = Image.asset("assets/images/logo_app.png");
   static AssetImage bg_form1 =  AssetImage("assets/images/bg_form1.png");
   static AssetImage bg_form2 =  AssetImage("assets/images/bg_form2.png");
+  static AssetImage bg_finish =  AssetImage("assets/images/bg_finish.png");
   static AssetImage bg_morning =  AssetImage("assets/images/bg_btnmorning.png");
   static AssetImage bg_night =  AssetImage("assets/images/bg_btnnight.png");
   static AssetImage bg_moon =  AssetImage("assets/images/bg_btnmoon.png");
@@ -36,7 +38,7 @@ class AssetsIconImage {
 class StyleText {
   static TextStyle btnForm(Color? color) {
     return GoogleFonts.inter(
-        fontSize: 24, fontWeight: FontWeight.w700, color: color);
+        fontSize: 20, fontWeight: FontWeight.w700, color: color);
   }
 
   static TextStyle title(Color? color) {

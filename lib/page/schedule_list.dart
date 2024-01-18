@@ -4,6 +4,8 @@ import 'package:edu_flo/code_assets/assets.dart';
 import 'package:edu_flo/local/db_helper.dart';
 import 'package:edu_flo/local/dummy/schedule_list.dart';
 import 'package:edu_flo/model/db/login_db.dart';
+import 'package:edu_flo/page/detail_schedule.dart';
+import 'package:edu_flo/page/form1_page.dart';
 import 'package:edu_flo/page/home_edu.dart';
 import 'package:edu_flo/page/stopwatch.dart';
 import 'package:flutter/material.dart';
@@ -213,7 +215,12 @@ class _SchedulePageState extends State<SchedulePage> {
                           ))),
                   SpaceWidget.height(context, 0.01),
                   GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const FormPageFirst()));
+                      },
                       child: Container(
                           width: 150,
                           height: 75,
@@ -246,6 +253,13 @@ class _SchedulePageState extends State<SchedulePage> {
               margin: const EdgeInsets.only(top: 20),
               elevation: 3,
               child: ListTile(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => DetailSchedulePage(
+                              scheduleModel: schedule[index])));
+                },
                 title: Text(schedule[index].title,
                     style: StyleText.titleListtile(Colors.black)),
                 subtitle: Text(schedule[index].subtitle,
@@ -356,6 +370,12 @@ class _SchedulePageState extends State<SchedulePage> {
                 allowViewNavigation: true,
                 showNavigationArrow: true,
                 showActionButtons: true,
+                onSubmit: (Object? value) {
+                  Navigator.pop(context);
+                },
+                onCancel: () {
+                  Navigator.pop(context);
+                },
                 minDate: DateTime(2020, 01, 01),
                 maxDate: DateTime(2045, 12, 31),
                 enablePastDates: true,
